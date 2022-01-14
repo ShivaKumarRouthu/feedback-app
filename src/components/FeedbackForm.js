@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import Card from "../shared/Card";
 import Button from "../shared/Button";
@@ -44,7 +43,6 @@ function FeedbackForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let finalFeedbackObj = {
-      id: uuidv4(),
       text: review,
       rating: feedbackRating,
     };

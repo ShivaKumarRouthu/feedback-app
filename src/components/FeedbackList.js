@@ -3,12 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import FeedbackItem from "./FeedbackItem";
 import FeedbackContext from "../context/FeedbackContext";
+import Spinner from "./Spinner";
 
 function FeedbackList() {
-  const { feedbackData } = useContext(FeedbackContext);
+  const { feedbackData, isLoading } = useContext(FeedbackContext);
 
-  return !feedbackData || feedbackData.length === 0 ? (
-    <h2>No Feedback Available</h2>
+  if (!isLoading && (!feedbackData || feedbackData.length === 0)) {
+    return <h2>No Feedback Available</h2>;
+  }
+
+  return isLoading ? (
+    <Spinner />
   ) : (
     <div className="feedback-list">
       <ul>
